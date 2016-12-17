@@ -9,7 +9,7 @@
     <div class="panel panel-primary">
         <h2 class="panel-heading text-center">{{$question->title}}</h2>
         <div class="panel-body">
-            {{$question->body }} abcd
+            {{$question->body}}
         </div>
     </div>
     <div class="">
