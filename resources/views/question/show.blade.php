@@ -12,6 +12,7 @@
             {{$question->body}}
         </div>
     </div>
+    @if($question->authorId === Auth::user()->id)
     <div class="">
         <div class="col-md-6">
             <a href="{{url('question') . '/' . $question->id . '/edit'}}" class="btn btn-primary btn-lg">Edit</a>
@@ -24,5 +25,6 @@
             </form>
         </div>
     </div>
+    @endif
 </div>
 @endsection

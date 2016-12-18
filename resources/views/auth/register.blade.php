@@ -61,6 +61,20 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="role" class="control-label col-md-4">Register As</label>
+                            <div class="col-md-6">
+                                <select class="form-control" name="role" id="role" >
+                                    @foreach(App\Role::all() as $role)
+                                        @if($role->id !=1)
+                                        <option value="{{$role->id}}">{{$role->role}}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
                                     Register

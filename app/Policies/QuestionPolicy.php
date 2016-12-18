@@ -20,7 +20,7 @@ class QuestionPolicy
      */
     public function view(User $user, Question $question)
     {
-        return $question->authorId === $user->id;
+        return true;
     }
 
     /**
