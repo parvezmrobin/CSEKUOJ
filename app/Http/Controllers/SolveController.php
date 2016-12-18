@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Solve;
 use Illuminate\Http\Request;
 
@@ -19,17 +20,7 @@ class SolveController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return view('solve/index')->withSolves(Solve::where('user_id', Auth::user()->id)->get());
     }
 
     /**
@@ -40,51 +31,20 @@ class SolveController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $this->authorize('create', Solve::class);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Solve  $solve
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Solve $solve)
-    {
-        //
-    }
+        $solve = new Solve();
+        $solve->question_id = $request->input('ques');
+        $solve->user_id = Auth::user()->id;
+        $solve->status = 'ACC';
+        $solve->time = .03;
+        $solve->lang = 'PHP';
+        $solve->save();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Solve  $solve
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Solve $solve)
-    {
-        //
-    }
+        // TODO: Check Solve
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Solve  $solve
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Solve $solve)
-    {
-        //
-    }
+        $request->file('solve')->storeAs('slv/' . Auth::user()->id . '/' . $solve->id, 'solve.txt');
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Solve  $solve
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Solve $solve)
-    {
-        //
+        return $this->index();
     }
 }

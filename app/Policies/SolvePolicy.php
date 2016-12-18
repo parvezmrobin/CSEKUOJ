@@ -11,11 +11,6 @@ class SolvePolicy
 {
     use HandlesAuthorization;
 
-    public function before($user, $ability)
-    {
-        return Auth::check();
-    }
-
     /**
      * Determine whether the user can view the solve.
      *
@@ -25,7 +20,7 @@ class SolvePolicy
      */
     public function view(User $user, Solve $solve)
     {
-        //
+        return $solve->userId === $user->id;
     }
 
     /**
@@ -36,7 +31,7 @@ class SolvePolicy
      */
     public function create(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -48,7 +43,7 @@ class SolvePolicy
      */
     public function update(User $user, Solve $solve)
     {
-        //
+        return $solve->userId === $user->id;
     }
 
     /**
@@ -60,6 +55,6 @@ class SolvePolicy
      */
     public function delete(User $user, Solve $solve)
     {
-        //
+        return $solve->userId === $user->id;
     }
 }

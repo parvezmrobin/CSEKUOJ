@@ -68,7 +68,22 @@
                             </li>
                             @endif
 
-                            
+                            @if(Auth::user()->isInRole('student'))
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    Solve
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="{{url('solve')}}">All Solve</a>
+                                        <a href="{{url('question')}}">All Question</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            @endif
+
+
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>

@@ -26,5 +26,24 @@
         </div>
     </div>
     @endif
+
+    @if(Auth::user()->isInRole('student'))
+    <form class="form-horizontal" enctype="multipart/form-data" action="{{url('solve')}}" method="post">
+        {{ csrf_field() }}
+        <div class="form-group">
+            <label for="file" class="control-label col-md-2">Upload Solve</label>
+            <div class="col-md-10">
+                <input id="file" type="file" accept=".txt" name="solve" class="form-control"  required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10 col-md-offset-2">
+                <input type="submit" name="" value="Upload" class="btn btn-success">
+            </div>
+        </div>
+
+        <input type="hidden" name="ques" value="{{$question->id}}">
+    </form>
+    @endif
 </div>
 @endsection
