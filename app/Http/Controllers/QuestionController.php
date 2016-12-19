@@ -56,7 +56,7 @@ class QuestionController extends Controller
         $request->file('outfile')->storeAs('ques/' . Auth::user()->id . '/' . $question->id, 'output.txt');
 
         $question->save();
-        return $this->index();
+        return $this->show($question);
     }
 
     /**
@@ -107,7 +107,7 @@ class QuestionController extends Controller
         }
 
         $question->save();
-        return $this->index();
+        return $this->show($question);
     }
 
     /**

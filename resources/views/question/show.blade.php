@@ -33,7 +33,7 @@
         <div class="form-group">
             <label for="file" class="control-label col-md-2">Upload Solve</label>
             <div class="col-md-10">
-                <input id="file" type="file" accept=".txt" name="solve" class="form-control"  required>
+                <input id="file" type="file" accept=".txt, .c, .cpp, .h, .php, .py" name="solve" class="form-control"  required>
             </div>
         </div>
         <div class="form-group">

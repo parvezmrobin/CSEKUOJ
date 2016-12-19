@@ -61,7 +61,8 @@
                                 </a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="{{url('question')}}">All Question</a>
+                                        <a href="{{url('home')}}">All Questions</a>
+                                        <a href="{{url('question')}}">Your Questions</a>
                                         <a href="{{url('question/create')}}">Create Question</a>
                                     </li>
                                 </ul>
@@ -76,8 +77,8 @@
                                 </a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="{{url('solve')}}">All Solve</a>
-                                        <a href="{{url('question')}}">All Question</a>
+                                        <a href="{{url('solve')}}">Your Solves</a>
+                                        <a href="{{url('home')}}">All Questions</a>
                                     </li>
                                 </ul>
                             </li>

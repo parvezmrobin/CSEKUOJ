@@ -2,22 +2,21 @@
 
 @section('content')
 <div class="row">
-    <div class="well">
+    <div class="well col-md-8 col-md-offset-2">
 
-        @if($questions->count() === 0)
-        <h3 class="alert alert-success">No Question avilable</h3>
-        @endif
+        <h2>Your Questions</h2>
+        <ul class="list-group">
+            @forelse($questions as $question)
+            <a href="{{url('question' . '/' . $question->id)}}">
+                <li class="list-group-item">
+                    {{$question->title}}<span class="badge">{{$question->lang}}</span>
+                </li>
+            </a>
+            @empty
+            <li class="alert alert-danger">No Question avilable</li>
+            @endforelse
+        </ul>
 
-        @foreach($questions as $question)
-        <a href="{{url('question' . '/' . $question->id)}}">
-            <div class="panel panel-primary">
-                <h2 class="panel-heading text-center">{{$question->title}}</h2>
-                <div class="panel-body">
-                    {{$question->body}}
-                </div>
-            </div>
-        </a>
-        @endforeach
 
     </div>
 </div>
