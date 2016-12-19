@@ -18,7 +18,7 @@ class CreateSolvesTable extends Migration
             $table->integer('question_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->string('status', 10);
-            $table->dateTime('time');
+            $table->float('time');
             $table->string('lang', 10);
             $table->timestamps();
 

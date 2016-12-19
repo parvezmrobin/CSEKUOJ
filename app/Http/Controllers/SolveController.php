@@ -42,10 +42,11 @@ class SolveController extends Controller
 
         //Check Solve
         //return $request->file('solve')->extension();
-        $request->file('solve')->storeAs('', 'solve.cpp' );
+        $lang = $request->input('lang');
+        $request->file('solve')->storeAs('', 'solve.' . $lang);
 
         chdir("..\\storage\\app");
-        exec('gcc solve.cpp -o solve.exe');
+        exec('gcc solve.' . $lang . ' -o solve.exe');
         $filePath = 'ques/' . Question::find($solve->question_id)->user_id . '/' . $solve->question_id;
 
         $fileOutput = Storage::get($filePath . '/output.txt');
@@ -63,10 +64,20 @@ class SolveController extends Controller
         //Continue building Solve object
         $solve->status = $res ? 'ACC' : 'WA';
         $solve->time = ($postTime - $preTime)/1000000;
-        $solve->lang = 'C';
+        switch ($lang) {
+            case 'cpp':
+                $solve->lang = 'C++';
+                break;
+            case 'py':
+                $solve->lang = 'Python';
+                break;
+            default:
+                $solve->lang = 'N/A';
+                break;
+        }
         $solve->save();
 
-        $request->file('solve')->storeAs('slv/' . Auth::user()->id . '/' . $solve->id, 'solve.cpp');
+        $request->file('solve')->storeAs('slv/' . Auth::user()->id . '/' . $solve->id, 'solve.' . $lang);
 
         return $this->index();
     }

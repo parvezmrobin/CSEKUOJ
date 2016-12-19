@@ -32,8 +32,15 @@
         {{ csrf_field() }}
         <div class="form-group">
             <label for="file" class="control-label col-md-2">Upload Solve</label>
-            <div class="col-md-10">
+            <div class="col-md-4">
                 <input id="file" type="file" accept=".txt, .c, .cpp, .h, .php, .py" name="solve" class="form-control"  required>
+            </div>
+            <label for="lang" class="control-label col-md-2">Language</label>
+            <div class="col-md-4" >
+                <select class="form-control" name="lang" id="lang">
+                    <option value="cpp">C++</option>
+                    <option value="py">Python</option>
+                </select>
             </div>
         </div>
         <div class="form-group">

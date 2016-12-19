@@ -23,13 +23,12 @@
             </div>
             <div class="form-group">
                 <label for="infile" class="control-label col-md-2">Input FIle</label>
-                <div class="col-md-10">
+                <div class="col-md-4">
                     <input id="infile" type="file" name="infile" class="form-control" accept=".txt" required>
                 </div>
-            </div>
-            <div class="form-group">
+
                 <label for="outfile" class="control-label col-md-2">Output File</label>
-                <div class="col-md-10">
+                <div class="col-md-4">
                     <input id="outfile" type="file" name="outfile" class="form-control" accept=".txt" required>
                 </div>
             </div>
