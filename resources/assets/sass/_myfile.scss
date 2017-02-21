@@ -1,0 +1,8 @@
+.abc{
+    color: red;
+}
+
+.efg{
+    @extend .abc;
+    background: blue;
+}
